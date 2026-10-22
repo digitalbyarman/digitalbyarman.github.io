@@ -1,0 +1,355 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>DigitalByArman — Tech & Digital News</title>
+
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background: #f5f7fa;
+      color: #17202a;
+    }
+
+    header {
+      background: #111827;
+      color: white;
+      padding: 18px;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .nav {
+      max-width: 1100px;
+      margin: auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 15px;
+    }
+
+    .logo {
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: #38bdf8;
+    }
+
+    nav a {
+      color: white;
+      text-decoration: none;
+      margin-left: 15px;
+      font-size: 14px;
+    }
+
+    .hero {
+      background: linear-gradient(135deg, #111827, #1e3a8a);
+      color: white;
+      padding: 70px 20px;
+      text-align: center;
+    }
+
+    .hero h1 {
+      font-size: 42px;
+      margin-bottom: 12px;
+    }
+
+    .hero p {
+      color: #dbeafe;
+      font-size: 18px;
+    }
+
+    .container {
+      max-width: 1100px;
+      margin: 35px auto;
+      padding: 0 18px;
+    }
+
+    .section-title {
+      font-size: 28px;
+      margin-bottom: 20px;
+    }
+
+    .categories {
+      display: flex;
+      gap: 10px;
+      overflow-x: auto;
+      margin-bottom: 30px;
+    }
+
+    .category {
+      background: white;
+      border: 1px solid #ddd;
+      padding: 10px 16px;
+      border-radius: 20px;
+      white-space: nowrap;
+      cursor: pointer;
+    }
+
+    .category:hover {
+      background: #111827;
+      color: white;
+    }
+
+    .search {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #ddd;
+      border-radius: 8px;
+      margin-bottom: 25px;
+      font-size: 16px;
+    }
+
+    .news-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .card {
+      background: white;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.08);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card-image {
+      height: 180px;
+      background: linear-gradient(135deg, #38bdf8, #6366f1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-size: 45px;
+    }
+
+    .card-content {
+      padding: 18px;
+    }
+
+    .tag {
+      color: #2563eb;
+      font-size: 13px;
+      font-weight: bold;
+    }
+
+    .card h3 {
+      margin: 8px 0;
+      font-size: 20px;
+    }
+
+    .card p {
+      color: #667085;
+      line-height: 1.5;
+      font-size: 14px;
+    }
+
+    .read {
+      display: inline-block;
+      margin-top: 15px;
+      color: #2563eb;
+      font-weight: bold;
+      text-decoration: none;
+    }
+
+    footer {
+      margin-top: 50px;
+      background: #111827;
+      color: white;
+      text-align: center;
+      padding: 30px 15px;
+    }
+
+    @media (max-width: 800px) {
+      .news-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      nav {
+        display: none;
+      }
+    }
+
+    @media (max-width: 550px) {
+      .hero h1 {
+        font-size: 32px;
+      }
+
+      .news-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="nav">
+      <div class="logo">Digital<span>ByArman</span></div>
+
+      <nav>
+        <a href="#">Home</a>
+        <a href="#news">News</a>
+        <a href="#about">About</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero">
+    <h1>DigitalByArman</h1>
+    <p>Your daily source for technology, AI, gadgets and digital news.</p>
+  </section>
+
+  <main class="container">
+
+    <input
+      type="text"
+      id="search"
+      class="search"
+      placeholder="🔎 Search news..."
+      onkeyup="searchNews()"
+    >
+
+    <h2 class="section-title">Categories</h2>
+
+    <div class="categories">
+      <div class="category">Technology</div>
+      <div class="category">AI</div>
+      <div class="category">Gadgets</div>
+      <div class="category">Internet</div>
+      <div class="category">Gaming</div>
+    </div>
+
+    <h2 class="section-title" id="news">Latest News</h2>
+
+    <div class="news-grid" id="newsGrid">
+
+      <article class="card">
+        <div class="card-image">🤖</div>
+        <div class="card-content">
+          <div class="tag">AI</div>
+          <h3>AI Is Changing the Digital World</h3>
+          <p>
+            Discover how artificial intelligence is changing the way people
+            work, learn and use technology.
+          </p>
+          <a class="read" href="#">Read More →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-image">📱</div>
+        <div class="card-content">
+          <div class="tag">Gadgets</div>
+          <h3>The Future of Smartphones</h3>
+          <p>
+            New smartphone technology continues to bring faster performance,
+            better cameras and smarter features.
+          </p>
+          <a class="read" href="#">Read More →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-image">💻</div>
+        <div class="card-content">
+          <div class="tag">Technology</div>
+          <h3>Top Technology Trends to Watch</h3>
+          <p>
+            Here are some of the biggest digital technology trends to keep
+            an eye on.
+          </p>
+          <a class="read" href="#">Read More →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-image">🎮</div>
+        <div class="card-content">
+          <div class="tag">Gaming</div>
+          <h3>The Next Generation of Gaming</h3>
+          <p>
+            Gaming technology is evolving with powerful hardware and new
+            interactive experiences.
+          </p>
+          <a class="read" href="#">Read More →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-image">🌐</div>
+        <div class="card-content">
+          <div class="tag">Internet</div>
+          <h3>How the Internet Is Evolving</h3>
+          <p>
+            Explore the technologies shaping the next generation of the web.
+          </p>
+          <a class="read" href="#">Read More →</a>
+        </div>
+      </article>
+
+      <article class="card">
+        <div class="card-image">🚀</div>
+        <div class="card-content">
+          <div class="tag">Future</div>
+          <h3>Technology of Tomorrow</h3>
+          <p>
+            From AI to advanced computing, technology is moving faster than
+            ever.
+          </p>
+          <a class="read" href="#">Read More →</a>
+        </div>
+      </article>
+
+    </div>
+  </main>
+
+  <footer id="about">
+    <h3>DigitalByArman</h3>
+    <p>Technology • AI • Gadgets • Digital News</p>
+    <br>
+    <p>© 2026 DigitalByArman. All rights reserved.</p>
+  </footer>
+
+  <script>
+    function searchNews() {
+      const input = document
+        .getElementById("search")
+        .value
+        .toLowerCase();
+
+      const cards = document.querySelectorAll(".card");
+
+      cards.forEach(card => {
+        const text = card.innerText.toLowerCase();
+
+        if (text.includes(input)) {
+          card.style.display = "block";
+        } else {
+          card.style.display = "none";
+        }
+      });
+    }
+  </script>
+
+</body>
+</html>
+
+
